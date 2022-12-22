@@ -36,6 +36,8 @@ public class CompanyService {
         if (company.get().getBalance() >= amount) {
             depositRepository.save(Deposit.builder().company(company.get()).user(user.get()).
                     dateDeposit(new Date()).type(type).endDate(Utility.calculateEndDate(type, new Date())).amount(amount).build());
+            company.get().setBalance(company.get().getBalance()-amount);
+            companyRepository.save(company.get());
             returnedMessage = "done !";
         } else {
             returnedMessage = "balance of company is not suffisant";

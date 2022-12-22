@@ -20,7 +20,5 @@ public class User {
     private long idUser;
     @Column(name = "name", nullable = false)
     private String name;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch= FetchType.EAGER)
-    private List<Deposit> deposit;
 
 }

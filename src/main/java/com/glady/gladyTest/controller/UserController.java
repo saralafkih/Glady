@@ -5,9 +5,12 @@ import com.glady.gladyTest.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -22,8 +25,13 @@ public class UserController {
         return new ResponseEntity<>(userService.calculateBalance(idUser), HttpStatus.OK);
     }
 
-    @PostMapping("/save")
-    public ResponseEntity<User> save(@Validated @RequestBody User user) throws Exception {
+    @PostMapping(path = "/save" )
+    public ResponseEntity<User> save( @RequestBody  User user) {
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<Optional<User>> findById(@RequestParam(value = "idUser") long idUser){
+        return new ResponseEntity<>(userService.get(idUser), HttpStatus.OK);
     }
 }

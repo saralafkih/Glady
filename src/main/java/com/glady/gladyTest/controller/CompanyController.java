@@ -25,11 +25,7 @@ public class CompanyController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Company> save(@Validated @RequestBody Company company) throws Exception {
+    public ResponseEntity<Company> save(@RequestBody Company company) {
         return new ResponseEntity<>(companyService.saveCompany(company), HttpStatus.OK);
-    }
-    @GetMapping("/hello")
-    public ResponseEntity<String> aa() throws Exception {
-        return new ResponseEntity<>("companyService.distribute(idUser, companyId, type, amount)", HttpStatus.OK);
     }
 }

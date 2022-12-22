@@ -25,9 +25,11 @@ public class Deposit {
     private Date endDate;
     @Column(name = "amount", nullable = false)
     private double amount;
+    @ToString.Exclude
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
+    @ToString.Exclude
     @ManyToOne(targetEntity = Company.class)
     @JoinColumn(name = "id_company", referencedColumnName = "id_company")
     private Company company;
