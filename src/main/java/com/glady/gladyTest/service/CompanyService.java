@@ -26,7 +26,7 @@ public class CompanyService {
     private final DepositRepository depositRepository;
     private final UserRepository userRepository;
 
-    public String distribute(long idUser, Long idCompany, String type, double amount) throws ParseException {
+    public String distribute(long idUser, long idCompany, String type, double amount) throws ParseException {
         String returnedMessage = "";
         Optional<User> user = userRepository.findById(idUser);
         Optional<Company> company = companyRepository.findById(idCompany);

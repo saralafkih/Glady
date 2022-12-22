@@ -25,7 +25,7 @@ public class CompanyController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Company> save(@RequestBody Company company) {
-        return new ResponseEntity<>(companyService.saveCompany(company), HttpStatus.OK);
+    public ResponseEntity<Company> save(@RequestParam(value = "name") String name, @RequestParam(value = "balance") double balance) {
+        return new ResponseEntity<>(companyService.saveCompany(Company.builder().name(name).balance(balance).build()), HttpStatus.OK);
     }
 }
